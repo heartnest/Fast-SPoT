@@ -13,4 +13,4 @@ Refreshing enabled
 
 Caching photo in file system
 
-Photos sorted
+All table sorted
