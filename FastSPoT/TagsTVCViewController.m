@@ -52,7 +52,7 @@
 }
 
 -(NSString *)titleForRow:(NSUInteger)row{
-    return self.tags[row];
+    return [self.tags[row] capitalizedString];
 }
 
 -(NSString *)subTitleForRow:(NSUInteger)row{
@@ -139,13 +139,9 @@
     for(NSDictionary *tmp in self.photos){
         NSString *tags = [tmp objectForKey:@"tags"];
         [self tagAnalyzer:tags];
-        
-        
     }
-    self.tags = [self.tagStore allKeys];
-    
-    
-    
+    NSMutableArray *arr = [[self.tagStore allKeys] mutableCopy];
+    self.tags = [arr sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
     [self.tableView reloadData];
 }
 
